@@ -19,7 +19,7 @@ group :test, :development do
   gem 'mysql2'
   gem "rspec-rails", "~> 2.6"
   gem 'factory_girl_rails'
-  gem 'tddium'
+  gem 'ruby_gntp'
   gem 'guard-rspec'
   gem 'guard-cucumber'
   gem 'ruby-debug19'
