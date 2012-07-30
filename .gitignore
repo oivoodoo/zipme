@@ -1,0 +1,7 @@
+.bundle
+log/*.log
+tmp/
+.sass-cache/
+public/stylesheets/*
+vendor/bundle/
+
