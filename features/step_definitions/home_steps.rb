@@ -3,54 +3,73 @@ Given /^I am on the home page$/ do
 end
 
 When /^I follow register link$/ do
-  click_on "register"
+  click_on "Sign up"
 end
 
 Then /^I should be on the register page$/ do
-  pending # express the regexp above with the code you wish you had
+  current_path.should match(/\/sign_up/)
 end
 
 When /^I fill register form$/ do
-  pending # express the regexp above with the code you wish you had
+  fill_in "user[email]", :with => "fred@example.com"
+  fill_in "user[password]", :with => "123456"
 end
 
 When /^I press register button$/ do
-  pending # express the regexp above with the code you wish you had
+  within 'form' do
+    click_on "Sign up"
+  end
 end
 
 Then /^I should be logged in$/ do
-  pending # express the regexp above with the code you wish you had
+  within('.container .nav') do
+    page.should have_content('fred@example.com')
+  end
 end
 
 Given /^I have already created account$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-When /^I fill login form$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-When /^I press login button$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-Given /^I have already logged in$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-When /^I follow logout link$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then /^I should be logged out$/ do
-  pending # express the regexp above with the code you wish you had
+  @user = create(:user)
 end
 
 When /^I follow login link$/ do
-  pending # express the regexp above with the code you wish you had
+  click_on "Login"
 end
 
 Then /^I should be on the login page$/ do
-  pending # express the regexp above with the code you wish you had
+  current_path.should match(/\/login/)
+end
+
+When /^I fill login form$/ do
+  fill_in "email", :with => "fred@example.com"
+  fill_in "password", :with => "123456"
+end
+
+When /^I press login button$/ do
+  within 'form' do
+    click_on 'Sign in'
+  end
+end
+
+Given /^I have already logged in$/ do
+  @user = create(:user)
+
+  steps %Q{
+    When I am on the home page
+    And I follow login link
+    And I fill login form
+    And I press login button
+  }
+end
+
+When /^I follow logout link$/ do
+  within '.container .nav' do
+    click_on 'Logout'
+  end
+end
+
+Then /^I should be logged out$/ do
+  within('.container .nav') do
+    page.should_not have_content('fred@example.com')
+  end
 end
 

@@ -24,7 +24,7 @@ group :test, :development do
   gem 'ruby_gntp'
   gem 'guard-rspec'
   gem 'guard-cucumber'
-  gem 'ruby-debug19'
+  gem 'debugger'
 end
 
 group :test do

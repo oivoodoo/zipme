@@ -1,0 +1,10 @@
+.login-form
+  %h2 Sign in
+  = form_tag sessions_path, :method => :post do
+    %fieldset
+      .clearfix
+        = text_field_tag :email, '', :placeholder => "Email"
+      .clearfix
+        = password_field_tag :password, '', :placeholder => "Password"
+      %button.btn.primary{:type => "submit"} Sign in
+

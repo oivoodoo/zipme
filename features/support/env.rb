@@ -4,6 +4,8 @@ Capybara.default_selector = :css
 
 ActionController::Base.allow_rescue = false
 
+World(FactoryGirl::Syntax::Methods)
+
 begin
   DatabaseCleaner.strategy = :transaction
 rescue NameError
