@@ -1,0 +1,6 @@
+options:
+  server: "http://deployments-app.herokuapp.com/deployments"
+production:
+  domain: "zipme.herokuapp.com"
+  api_key: "BMo0P3pv"
+
