@@ -17,7 +17,10 @@ Feature: View home page
     Given I have already created account
 
     When I am on the home page
-    And I fill login form
+    And I follow login link
+      Then I should be on the login page
+
+    When I fill login form
     And I press login button
       Then I should be logged in
 
