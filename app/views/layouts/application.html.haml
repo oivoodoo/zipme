@@ -33,7 +33,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand{:href => "#"} Shortlinks
+          = link_to "Zipme", root_path, :class => "brand"
           .container.nav-collapse
             %ul.nav
               - if logged_in?

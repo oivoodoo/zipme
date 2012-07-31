@@ -3,6 +3,12 @@ Feature: View home page
   As an user
   I want to be able surf on website, login, logout
 
+  Scenario: Navigate to the home page by logo
+    Given I am on the login page
+
+    When I click on the logo
+      Then I should be on the home page
+
   Scenario: Register a new user
     Given I am on the home page
 

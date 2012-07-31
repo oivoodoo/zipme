@@ -73,3 +73,14 @@ Then /^I should be logged out$/ do
   end
 end
 
+Given /^I am on the login page$/ do
+  visit '/login'
+end
+
+When /^I click on the logo$/ do
+  click_on 'Zipme'
+end
+
+Then /^I should be on the home page$/ do
+  current_path.should match(/\/$/)
+end
