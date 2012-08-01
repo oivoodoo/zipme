@@ -5,4 +5,5 @@ tmp/
 public/stylesheets/*
 vendor/bundle/
 config/*.yml
+public/version.txt
 
