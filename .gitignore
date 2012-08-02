@@ -4,6 +4,6 @@ tmp/
 .sass-cache/
 public/stylesheets/*
 vendor/bundle/
-config/*.yml
+config/database.yml
 public/version.txt
 

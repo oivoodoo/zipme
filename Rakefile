@@ -5,3 +5,6 @@
 require File.expand_path('../config/application', __FILE__)
 
 Shortlinks::Application.load_tasks
+
+require 'deployments/gem_tasks'
+
