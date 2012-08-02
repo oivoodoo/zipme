@@ -11,7 +11,6 @@ class Shortlinks.Routers.LinksRouter extends Backbone.Router
 
     @form = new Shortlinks.Views.Links.Form(
       el: $('#new_link')
-      model: new Shortlinks.Models.Link
       collection: Shortlinks.Tables.links
     )
     @form.render()
