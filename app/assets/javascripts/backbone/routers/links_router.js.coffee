@@ -5,7 +5,7 @@ class Shortlinks.Routers.LinksRouter extends Backbone.Router
   index: () ->
     @view = new Shortlinks.Views.Links.List(
       el: $('#links')
-      collection: Shortlinks.Tables.list
+      collection: Shortlinks.Tables.links
     )
     @view.render();
 

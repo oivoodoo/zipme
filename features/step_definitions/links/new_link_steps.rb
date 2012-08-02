@@ -10,7 +10,7 @@ Then /^I should see generated link$/ do
   link = Link.last
 
   within '#links' do
-    page.should have_content(link.generated)
+    page.should have_content(link.key)
   end
 end
 

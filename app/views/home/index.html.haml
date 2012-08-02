@@ -1,13 +1,13 @@
-#links
+%table#links.table.table-striped
 
 #generator
   = render 'links/form'
 
+= render :partial => 'templates'
+
 - content_for :scripts do
   :javascript
     $(function() {
-      // initialize backbone
-
       var links = new Shortlinks.Collections.LinksCollection();
       links.reset(#{@links.to_json})
 
