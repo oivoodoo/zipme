@@ -4,7 +4,6 @@ class Link < ActiveRecord::Base
   belongs_to :user
 
   validates :url, :presence => true
-  validates :key, :presence => true, :uniqueness => true
 
   uniquify :key
 end
