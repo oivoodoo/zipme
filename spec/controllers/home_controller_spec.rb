@@ -11,3 +11,16 @@ describe HomeController do
   end
 end
 
+describe HomeController do
+  context "with existing links" do
+    let!(:google) { create(:link) }
+    let!(:yandex) { create(:link) }
+
+    context "view home page" do
+      before { get :index }
+
+      it { assigns(:links).should == [google, yandex] }
+    end
+  end
+end
+
