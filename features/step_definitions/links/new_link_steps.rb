@@ -7,6 +7,8 @@ When /^I press generate button$/ do
 end
 
 Then /^I should see generated link$/ do
+  sleep 3
+
   link = Link.last
 
   within '#links' do
