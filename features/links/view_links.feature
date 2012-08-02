@@ -12,3 +12,8 @@ Feature: View links on the home page as a list
     When I am on the home page
       Then I should see link in the list
 
+  Scenario: Navigate to the page
+    When I am on the home page
+    And I follow by generated link
+      Then I should be on the page that was pasted for making short version
+

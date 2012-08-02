@@ -6,5 +6,13 @@ class Link < ActiveRecord::Base
   validates :url, :presence => true
 
   uniquify :key
+
+  def short
+    "/links/#{key}" unless key.blank?
+  end
+
+  def to_param
+    key
+  end
 end
 

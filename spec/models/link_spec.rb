@@ -21,3 +21,17 @@ describe Link do
   end
 end
 
+describe Link do
+  let(:link) { build(:link) }
+
+  it { link.short.should_not be }
+
+  context "on create" do
+    before { link.save }
+
+    it "should provide short version of url using key" do
+      link.short.should == "/links/#{link.key}"
+    end
+  end
+end
+

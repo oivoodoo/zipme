@@ -1,5 +1,8 @@
 %script(type = 'text/template' id = 'links-row')
   :plain
+    <td class='url'>
+      <a href='<%= url %>'><%= url %></a>
+    </td>
     <td class='key'>
-      <a href='/links/<%= key %>'><%= url %></a>
+      <a href='/links/<%= key %>'>/links/<%= key %></a>
     </td>
