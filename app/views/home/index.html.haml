@@ -1,5 +1,19 @@
-%h1 Shortlinks
+%h1 Make link shorter using form below.
 
 #generator
   = render 'links/form'
+
+- content_for :scripts do
+  :javascript
+    $(function() {
+      // initialize backbone
+
+      var links = new Shortlinks.Collections.LinksCollection();
+      links.reset(#{@links.to_json})
+
+      Shortlinks.Tables.links = links;
+
+      window.router = new Shortlinks.Routers.LinksRouter();
+      Backbone.history.start();
+    });
 

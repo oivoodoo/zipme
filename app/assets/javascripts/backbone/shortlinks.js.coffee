@@ -9,3 +9,4 @@ window.Shortlinks =
   Collections: {}
   Routers: {}
   Views: {}
+  Tables: {}
