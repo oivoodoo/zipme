@@ -8,5 +8,7 @@ window.Shortlinks =
   Models: {}
   Collections: {}
   Routers: {}
-  Views: {}
+  Views: {
+    Links: {}
+  }
   Tables: {}

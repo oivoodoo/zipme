@@ -1,8 +1,17 @@
 class Shortlinks.Routers.LinksRouter extends Backbone.Router
-  initialize: (options) ->
-
   routes:
-    '/': 'index'
+    '': 'index'
 
   index: () ->
+    @view = new Shortlinks.Views.Links.List(
+      el: $('#links')
+      collection: Shortlinks.Tables.list
+    )
+    @view.render();
+
+    @form = new Shortlinks.Views.Links.Form(
+      el: $('#new_link')
+      model: new Shortlinks.Models.Link
+    )
+    @form.render()
 
