@@ -1,5 +1,5 @@
 When /^I fill link form$/ do
-  fill_in "Url", :with => "http://www.example.com"
+  fill_in "link[url]", :with => "http://www.example.com"
 end
 
 When /^I press generate button$/ do

@@ -1,4 +1,3 @@
-= form_for @link do |form|
-  = form.label :url
-  = form.text_field :url
-  = form.submit "Generate"
+= form_for @link, :html => { :class => "well form-inline" } do |form|
+  = form.text_field :url, :placeholder => "Url"
+  = form.submit "Generate", :class => "btn btn-primary"
