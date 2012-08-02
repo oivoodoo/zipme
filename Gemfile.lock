@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/ryanb/uniquify.git
+  revision: bdfb5828cde7e206a50dfc94058a05e71ea0153e
+  specs:
+    uniquify (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -261,3 +267,4 @@ DEPENDENCIES
   timecop
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
+  uniquify!

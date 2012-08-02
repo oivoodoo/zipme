@@ -6,6 +6,8 @@ describe HomeController do
 
     it { should respond_with(:success) }
     it { should render_template("index") }
+    it { assigns(:link).should be_kind_of(Link) }
+    it { assigns(:link).should be_new_record }
   end
 end
 

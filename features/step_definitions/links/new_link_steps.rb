@@ -1,13 +1,17 @@
 When /^I fill link form$/ do
-  pending # express the regexp above with the code you wish you had
+  fill_in "Url", :with => "http://www.example.com"
 end
 
 When /^I press generate button$/ do
-  pending # express the regexp above with the code you wish you had
+  click_on "Generate"
 end
 
 Then /^I should see generated link$/ do
-  pending # express the regexp above with the code you wish you had
+  link = Link.last
+
+  within '#links' do
+    page.should have_content(link.generated)
+  end
 end
 
 Then /^I should see successful notification$/ do

@@ -6,6 +6,7 @@ gem 'heroku'
 gem 'jquery-rails'
 gem 'sorcery'
 gem 'twitter-bootstrap-rails'
+gem 'uniquify', :git => "git://github.com/ryanb/uniquify.git"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

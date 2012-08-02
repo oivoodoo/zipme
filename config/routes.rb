@@ -9,5 +9,7 @@ Shortlinks::Application.routes.draw do
 
   resources :users, :only => [:new, :create]
   match '/sign_up' => 'users#new', :as => :sign_up
+
+  resources :links, :only => :create
 end
 
