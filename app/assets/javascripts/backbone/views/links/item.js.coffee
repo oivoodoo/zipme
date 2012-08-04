@@ -1,6 +1,6 @@
 class Shortlinks.Views.Links.Item extends Backbone.View
   tagName: 'tr'
-  template: _.template($('#links-row').html())
+  template: JST['backbone/templates/links/item']
 
   render: () ->
     html = @template(@model.toJSON())

@@ -10,9 +10,5 @@ class Link < ActiveRecord::Base
   def short
     "/links/#{key}" unless key.blank?
   end
-
-  def to_param
-    key
-  end
 end
 

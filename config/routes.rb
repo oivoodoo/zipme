@@ -11,5 +11,7 @@ Shortlinks::Application.routes.draw do
   match '/sign_up' => 'users#new', :as => :sign_up
 
   resources :links, :only => [:create, :show]
+
+  match '/:key' => "redirect#navigate", :as => :redirect
 end
 

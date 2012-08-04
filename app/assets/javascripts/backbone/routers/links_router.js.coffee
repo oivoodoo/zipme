@@ -1,6 +1,7 @@
 class Shortlinks.Routers.LinksRouter extends Backbone.Router
   routes:
-    '': 'index'
+    '':               'index'
+    'links/:id/edit': 'edit'
 
   index: () ->
     @view = new Shortlinks.Views.Links.List(
@@ -14,4 +15,13 @@ class Shortlinks.Routers.LinksRouter extends Backbone.Router
       collection: Shortlinks.Tables.links
     )
     @form.render()
+
+  edit: (id) ->
+    model = new Shortlinks.Models.Link(id: id)
+    model.fetch
+      success: (model) =>
+        @view = new Shortlinks.Views.Links.Edit(model: model)
+        @view.render()
+      error: (message) ->
+        console.log(message)
 

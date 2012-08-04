@@ -4,9 +4,10 @@ describe LinksController do
   let!(:link) { create(:link) }
 
   describe "redirect to requested page" do
-    before { get 'show', :id => link.key }
+    before { get 'show', :id => link.to_param }
 
-    it { should redirect_to(link.url) }
+    it { should respond_with(:success) }
+    it { response.body.should == link.to_json(:methods => :short) }
   end
 
   describe "page not found on requested invalid id" do

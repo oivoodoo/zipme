@@ -2,7 +2,7 @@ class LinksController < ApplicationController
   before_filter :find_link, :only => :show
 
   def show
-    redirect_to @link.url
+    render :json => @link.to_json(:methods => :short)
   end
 
   def create
@@ -18,7 +18,7 @@ class LinksController < ApplicationController
   private
 
   def find_link
-    @link = Link.find_by_key(params[:id])
+    @link = Link.find_by_id(params[:id])
 
     head(404) if @link.blank?
   end
