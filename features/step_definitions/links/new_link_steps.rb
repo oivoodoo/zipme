@@ -51,5 +51,8 @@ When /^I changed details of the first link$/ do
 end
 
 Then /^I should see changed details in the list$/ do
-  pending # express the regexp above with the code you wish you had
+  within '#links' do
+    find('.key').should have_content('new_key')
+  end
 end
+
