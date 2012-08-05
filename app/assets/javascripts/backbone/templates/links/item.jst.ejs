@@ -5,6 +5,8 @@
   <a href='/<%= key %>'>/<%= key %></a>
 </td>
 <td class='actions'>
-  <a href='#/links/<%= id %>/edit' class='edit'>Edit</a>
+  <% if(access) { %>
+    <a href='#/links/<%= id %>/edit' class='edit'>Edit</a>
+  <% } %>
 </td>
 

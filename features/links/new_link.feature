@@ -14,13 +14,3 @@ Feature: Add a new link
       And I should see successful notification
       And I should see edit button near of generated link
 
-  Scenario: User should be able to edit generated link
-    Given I have already generated links
-
-    When I am on the home page
-      Then I should see list with my generated links
-      And I should see edit buttons near of the links
-
-    When I changed details of the first link
-      Then I should see changed details in the list
-

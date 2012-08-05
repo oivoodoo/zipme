@@ -6,6 +6,8 @@
 - content_for :scripts do
   :javascript
     $(function() {
+      window.config = { user_id: #{logged_in? ? current_user.id : "null"} };
+
       var links = new Shortlinks.Collections.LinksCollection();
       links.reset(#{@links.to_json})
 

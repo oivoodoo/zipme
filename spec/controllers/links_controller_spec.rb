@@ -79,6 +79,16 @@ describe LinksController do
       it { should respond_with(:success) }
       it { assigns(:link).user.should == current_user }
     end
+
+    context "try to update not owned link" do
+      let(:not_me) { create(:user) }
+      let!(:not_mine) { create(:link, :user => not_me) }
+
+      before { put :update, :id => not_mine, :link => { :url => "not mine link" } }
+
+      it { should respond_with(403) }
+      it { assigns(:link).reload.url.should_not == 'not mine link'}
+    end
   end
 end
 

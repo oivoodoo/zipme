@@ -24,35 +24,3 @@ Then /^I should see edit button near of generated link$/ do
   pending # express the regexp above with the code you wish you had
 end
 
-Given /^I have already generated links$/ do
-  @link = create(:link)
-end
-
-Then /^I should see list with my generated links$/ do
-  within '#links' do
-    page.should have_content(@link.key)
-  end
-end
-
-Then /^I should see edit buttons near of the links$/ do
-  within '#links' do
-    find('.edit').should be
-  end
-end
-
-When /^I changed details of the first link$/ do
-  click_on 'Edit'
-
-  fill_in 'link[key]', :with => 'new_key'
-
-  sleep 2
-
-  click_on 'Save'
-end
-
-Then /^I should see changed details in the list$/ do
-  within '#links' do
-    find('.key').should have_content('new_key')
-  end
-end
-

@@ -1,5 +1,6 @@
 class LinksController < ApplicationController
   before_filter :find_link, :only => [:show, :update]
+  before_filter :check_owner, :only => [:update]
 
   def index
     @links = Link.all
@@ -36,5 +37,9 @@ class LinksController < ApplicationController
     @link = Link.find_by_id(params[:id])
 
     head(404) if @link.blank?
+  end
+
+  def check_owner
+    head(403) if not @link.user_id.nil? and @link.user != current_user
   end
 end
