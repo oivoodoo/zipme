@@ -6,7 +6,7 @@ class Shortlinks.Views.Links.Item extends Backbone.View
     this.$el.attr('id', "link_#{@model.id}")
 
   render: () ->
-    html = @template(@model.toJSON())
+    html = @template(@model.templateJSON())
     this.$el.html(html)
 
     return this
