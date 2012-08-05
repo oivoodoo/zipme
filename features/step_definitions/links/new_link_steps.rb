@@ -44,6 +44,9 @@ When /^I changed details of the first link$/ do
   click_on 'Edit'
 
   fill_in 'link[key]', :with => 'new_key'
+
+  sleep 2
+
   click_on 'Save'
 end
 

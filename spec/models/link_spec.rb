@@ -30,7 +30,7 @@ describe Link do
     before { link.save }
 
     it "should provide short version of url using key" do
-      link.short.should == "/links/#{link.key}"
+      link.short.should == "/#{link.key}"
     end
   end
 end

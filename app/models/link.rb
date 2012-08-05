@@ -8,7 +8,7 @@ class Link < ActiveRecord::Base
   uniquify :key
 
   def short
-    "/links/#{key}" unless key.blank?
+    "/#{key}" unless key.blank?
   end
 end
 
