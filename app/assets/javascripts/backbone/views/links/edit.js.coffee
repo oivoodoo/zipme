@@ -1,7 +1,7 @@
 class Shortlinks.Views.Links.Edit extends Backbone.View
   template: JST['backbone/templates/links/edit']
   events:
-    'click': 'update'
+    'click button': 'update'
     'click .cancel': 'cancel'
 
   render: () ->
@@ -19,16 +19,19 @@ class Shortlinks.Views.Links.Edit extends Backbone.View
     options =
       success: (model) =>
         @key.val('')
+        @renderItem()
         router.navigate('/')
       error: (message) -> console.log(message)
 
     @model.save attributes, options
 
-  cancel: (event) ->
+  cancel: (event) =>
     event.preventDefault()
 
-    @view = new Shortlinks.Views.Links.Item(model: @model)
-    $("#link_#{@model.id}").replaceWith(@view.render().el)
-
+    @renderItem()
     router.navigate('/')
+
+  renderItem: () ->
+    view = new Shortlinks.Views.Links.Item(model: @model)
+    $("#link_#{@model.id}").replaceWith(view.render().el)
 

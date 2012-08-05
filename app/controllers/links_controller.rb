@@ -1,8 +1,8 @@
 class LinksController < ApplicationController
-  before_filter :find_link, :only => :show
+  before_filter :find_link, :only => [:show, :update]
 
   def show
-    render :json => @link.to_json(:methods => :short)
+    render :json => @link.to_json
   end
 
   def create
@@ -12,7 +12,15 @@ class LinksController < ApplicationController
 
     @link.save
 
-    render :json => @link.to_json(:methods => :short)
+    render :json => @link.to_json
+  end
+
+  def update
+    @link.update_attributes(params[:link])
+
+    head(400) and return if @link.invalid?
+
+    render :json => @link.to_json
   end
 
   private

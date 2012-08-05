@@ -29,6 +29,31 @@ describe LinksController do
     it { should respond_with(400) }
   end
 
+  describe "update link" do
+    let!(:link) { create(:link) }
+
+    before { xhr :put, :update, :id => link.id, :link => { :key => "new_key" } }
+
+    it { should respond_with(:success) }
+    it { response.body.should == link.reload.to_json(:methods => :short) }
+    it { link.reload.key.should == "new_key" }
+  end
+
+  describe "try to update link with invalid attributes" do
+    let!(:link) { create(:link) }
+
+    before { xhr :put, :update, :id => link.id, :link => { :key => "" } }
+
+    it { should respond_with(400) }
+    it { assigns(:link).key.should be_empty }
+  end
+
+  describe "try to update link using invalid id" do
+    before { xhr :put, :update, :id => "invalid id" }
+
+    it { should respond_with(404) }
+  end
+
   def attributes
     @attributes ||= attributes_for(:link)
   end

@@ -35,3 +35,9 @@ describe Link do
   end
 end
 
+describe Link do
+  let(:link) { build(:link) }
+
+  it { link.to_json.to_s.should include("short") }
+end
+
