@@ -139,7 +139,7 @@ class Offline.Storage
     @setItem "#{@name}-#{item.id}", JSON.stringify(item)
     @allIds.add(item.id)
 
-    @sync.pushItem(item) if @autoPush and !options.local
+    @sync.pushItem(item, options) if @autoPush and !options.local
 
     item
 
@@ -266,7 +266,7 @@ class Offline.Sync
     @pushItem(item) for item in @collection.dirty()
     @flushItem(sid) for sid in @storage.destroyIds.values
 
-  pushItem: (item) ->
+  pushItem: (item, options = {}) ->
     @storage.replaceKeyFields(item, 'server')
     localId = item.id
     delete item.attributes.id
@@ -274,7 +274,9 @@ class Offline.Sync
 
     @ajax method, item, success: (response, status, xhr) =>
       item.set(sid: response.id) if method is 'create'
-      item.save {dirty: false}, {local: true}
+
+      response['dirty'] = false
+      item.save response, {local: true}
 
     item.attributes.id = localId; item.id = localId
 

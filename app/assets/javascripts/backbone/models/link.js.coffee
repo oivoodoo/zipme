@@ -1,8 +1,8 @@
 class Shortlinks.Models.Link extends Backbone.Model
   paramRoot: 'link'
   defaults:
-    key: 'offline - key'
-    short: '/offline - key'
+    key: 'offline'
+    short: '/offline'
 
   url: () ->
     if @isNew() then '/links' else "/links/#{@id}"
@@ -19,9 +19,11 @@ class Shortlinks.Models.Link extends Backbone.Model
     delete attributes[s] for s in @secure
     attributes
 
-  initialize: (options) ->
-    @collection ||= options.collection
-    @storage = @collection.storage
+  initialize: () ->
+    @.on('change:dirty', (model, dirty) => @changeDirty(model, dirty))
+
+  changeDirty: (model, dirty) ->
+    model.trigger('update', @) unless dirty
 
 class Shortlinks.Collections.LinksCollection extends Backbone.Collection
   model: Shortlinks.Models.Link
