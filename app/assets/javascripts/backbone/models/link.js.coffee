@@ -23,6 +23,8 @@ class Shortlinks.Models.Link extends Backbone.Model
 
   initialize: () ->
     @changeAccess()
+
+    @set(sid: @id)
     @.on('change:dirty', (model, dirty) => @changeDirty(model, dirty))
 
     unless Offline.onLine()
