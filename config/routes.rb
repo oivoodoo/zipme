@@ -10,13 +10,13 @@ Shortlinks::Application.routes.draw do
   resources :users, :only => [:new, :create]
   match '/sign_up' => 'users#new', :as => :sign_up
 
-  resources :links, :only => [:create, :show, :update]
+  resources :links, :only => [:index, :create, :show, :update]
 
   offline = Rack::Offline.configure do
     cache "assets/application.js"
     cache "assets/application.css"
 
-    files = Dir["#{root}/assets/**/*.{js,css,jpg,png,gif}", "#{root}/*.html"]
+    files = Dir["#{root}/assets/**/*.{js,css,jpg,png,gif,ico}", "#{root}/*.html"]
     files.each do |file|
       cache Pathname.new(file).relative_path_from(root)
     end
