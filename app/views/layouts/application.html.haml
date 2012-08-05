@@ -48,6 +48,9 @@
       .content
         .row
           .span9
+            #offline-status.alert.alert-error(style = 'display: none')
+              Now you are working in offline. Please turn on your connection to internet for syncing data.
+
             = yield
           .span3
             .well.sidebar-nav

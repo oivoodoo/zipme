@@ -4,6 +4,9 @@ class Shortlinks.Routers.LinksRouter extends Backbone.Router
     'links/:id/edit': 'edit'
 
   index: () ->
+    @offline = new Shortlinks.Views.Offline(el: $('#offline-status'))
+    @offline.render()
+
     @view = new Shortlinks.Views.Links.List(
       el: $('#links')
       collection: Shortlinks.Tables.links
