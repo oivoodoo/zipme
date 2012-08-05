@@ -3,7 +3,16 @@ require 'spec_helper'
 describe LinksController do
   let!(:link) { create(:link) }
 
-  describe "redirect to requested page" do
+  describe 'get list of links' do
+    let!(:google) { create(:link) }
+
+    before { get 'index' }
+
+    it { should respond_with(:success) }
+    it { response.body.should == [link, google].to_json }
+  end
+
+  describe "get link" do
     before { get 'show', :id => link.to_param }
 
     it { should respond_with(:success) }

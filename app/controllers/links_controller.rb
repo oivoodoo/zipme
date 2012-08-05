@@ -1,6 +1,12 @@
 class LinksController < ApplicationController
   before_filter :find_link, :only => [:show, :update]
 
+  def index
+    @links = Link.all
+
+    render :json => @links
+  end
+
   def show
     render :json => @link.to_json
   end
