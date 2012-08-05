@@ -22,6 +22,12 @@ class Shortlinks.Models.Link extends Backbone.Model
   initialize: () ->
     @.on('change:dirty', (model, dirty) => @changeDirty(model, dirty))
 
+    unless Offline.onLine()
+      $(window).bind('online', () => @syncItem())
+
+  syncItem: () ->
+    @collection.storage.sync.pushItem(@) if @get('dirty')
+
   changeDirty: (model, dirty) ->
     model.trigger('update', @) unless dirty
 
@@ -31,10 +37,5 @@ class Shortlinks.Collections.LinksCollection extends Backbone.Collection
 
   initialize: () ->
     @storage = new Offline.Storage('links', @, autoPush: true)
-
-    context = @
-    $(window).bind('online', () -> context.storage.sync.push())
-
-    @
 
 
