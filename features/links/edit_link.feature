@@ -17,6 +17,9 @@ Feature: Add a new link
     When I changed details of the first link
       Then I should see changed details in the list
 
+    When I am on the home page
+      Then I should see changed details in the list
+
   Scenario: User should be able to edit only own links
     Given I have already generated links
     And someone generated links
