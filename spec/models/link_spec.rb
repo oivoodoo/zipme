@@ -41,3 +41,30 @@ describe Link do
   it { link.to_json.to_s.should include("short") }
 end
 
+describe Link do
+  context "owner trying to access link" do
+    let!(:owner) { create(:user) }
+    let!(:link) { create(:link, :user => owner) }
+
+    it { link.provide_access?(owner).should be_true }
+  end
+
+  context "not owner trying to access link" do
+    let!(:not_owner) { create(:user) }
+    let!(:link) { create(:link, :user => create(:user)) }
+
+    it { link.provide_access?(not_owner).should be_false }
+  end
+
+  context "anomymous link" do
+    let!(:link) { create(:link) }
+
+    it { link.provide_access?.should be_true }
+  end
+
+  context "link with owner trying to get anonymous" do
+    let!(:link) { create(:link, :user => create(:user)) }
+
+    it { link.provide_access?.should be_false }
+  end
+end

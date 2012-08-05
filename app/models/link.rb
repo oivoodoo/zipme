@@ -16,5 +16,9 @@ class Link < ActiveRecord::Base
   def to_json(options = {})
     super(methods: :short)
   end
+
+  def provide_access?(user = false)
+    user_id.nil? or (user and user.id == user_id)
+  end
 end
 

@@ -40,6 +40,6 @@ class LinksController < ApplicationController
   end
 
   def check_owner
-    head(403) if not @link.user_id.nil? and @link.user != current_user
+    head(403) unless @link.provide_access?(current_user)
   end
 end

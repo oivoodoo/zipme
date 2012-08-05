@@ -84,7 +84,7 @@ describe LinksController do
       let(:not_me) { create(:user) }
       let!(:not_mine) { create(:link, :user => not_me) }
 
-      before { put :update, :id => not_mine, :link => { :url => "not mine link" } }
+      before { put :update, :id => not_mine.id, :link => { :url => "not mine link" } }
 
       it { should respond_with(403) }
       it { assigns(:link).reload.url.should_not == 'not mine link'}
