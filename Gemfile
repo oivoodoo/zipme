@@ -9,6 +9,7 @@ gem 'twitter-bootstrap-rails'
 gem 'uniquify', :git => "git://github.com/ryanb/uniquify.git"
 gem 'rails-backbone'
 gem 'deployments'
+gem 'rack-offline', :git => 'https://github.com/wycats/rack-offline.git'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

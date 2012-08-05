@@ -12,6 +12,20 @@ Shortlinks::Application.routes.draw do
 
   resources :links, :only => [:create, :show, :update]
 
+  offline = Rack::Offline.configure do
+    cache "assets/application.js"
+    cache "assets/application.css"
+
+    files = Dir["#{root}/assets/**/*.{js,css,jpg,png,gif}", "#{root}/*.html"]
+    files.each do |file|
+      cache Pathname.new(file).relative_path_from(root)
+    end
+
+    network "/"
+  end
+
+  match "/application.manifest" => offline
+
   match '/:key' => "redirect#navigate", :as => :redirect
 end
 

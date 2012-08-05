@@ -4,6 +4,12 @@ GIT
   specs:
     uniquify (0.1.0)
 
+GIT
+  remote: https://github.com/wycats/rack-offline.git
+  revision: 4b92a41c23f2b2e2167610f17e388db606b5046a
+  specs:
+    rack-offline (0.6.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -295,6 +301,7 @@ DEPENDENCIES
   launchy
   mysql2
   pg
+  rack-offline!
   rails (= 3.2.6)
   rails-backbone
   rspec-rails (~> 2.6)
