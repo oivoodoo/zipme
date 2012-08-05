@@ -68,3 +68,20 @@ describe Link do
     it { link.provide_access?.should be_false }
   end
 end
+
+describe Link do
+  let!(:link) { create(:link) }
+
+  it "should change clicks on click" do
+    expect {
+      link.click!
+    }.to change { link.clicks }.by(1)
+  end
+
+  it "should change by 2 clicks on 2 times click" do
+    expect {
+      link.click!
+      link.click!
+    }.to change { link.clicks }.by(2)
+  end
+end

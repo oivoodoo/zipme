@@ -4,7 +4,12 @@ describe RedirectController do
   let!(:link) { create(:link) }
 
   describe "redirect to requested page" do
-    before { get 'navigate', :key => link.key }
+    before do
+      Link.should_receive(:find_by_key).with(link.key).and_return(link)
+      link.should_receive(:click!)
+
+      get 'navigate', :key => link.key
+    end
 
     it { should redirect_to(link.url) }
   end

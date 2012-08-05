@@ -3,13 +3,14 @@ class Shortlinks.Models.Link extends Backbone.Model
   defaults:
     key: 'offline'
     short: '/offline'
+    clicks: 0
 
   url: () ->
     if @isNew() then '/links' else "/links/#{@id}"
 
   secure: [
     'id', 'created_at', 'updated_at', 'short', 'user_id', 'collection',
-    'dirty', 'sid', 'access'
+    'dirty', 'sid', 'access', 'clicks'
   ]
 
   templateJSON: () ->

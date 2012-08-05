@@ -2,6 +2,8 @@ class RedirectController < ApplicationController
   before_filter :find_link
 
   def navigate
+    @link.click!
+
     redirect_to @link.url
   end
 

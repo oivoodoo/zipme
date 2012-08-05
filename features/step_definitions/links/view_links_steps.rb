@@ -17,3 +17,9 @@ Then /^I should be on the page that was pasted for making short version$/ do
   current_path.should match(/\/login/)
 end
 
+Then /^I should see (\d+) visit(s)?$/ do |number_of_visits, plural|
+  within '#links' do
+    find('.clicks').should have_content(number_of_visits)
+  end
+end
+

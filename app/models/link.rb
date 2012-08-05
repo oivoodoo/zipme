@@ -20,5 +20,9 @@ class Link < ActiveRecord::Base
   def provide_access?(user = false)
     user_id.nil? or (user and user.id == user_id)
   end
+
+  def click!
+    update_attribute(:clicks, clicks + 1)
+  end
 end
 
