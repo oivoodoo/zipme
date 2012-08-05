@@ -8,18 +8,13 @@ class Shortlinks.Views.Links.Form extends Backbone.View
   create: (event) ->
     event.preventDefault()
 
-    context = @
+    attributes = url: @url.val()
+    options =
+      success: (model) =>
+        @url.val('')
+        @collection.push(model)
+      error: (message) -> console.log(message)
 
     model = new Shortlinks.Models.Link
-    model.save(
-      { url: @url.val() },
-
-      success: (model) ->
-        context.url.val('')
-        context.collection.push(model)
-        # Show success notification on the form
-      error: (message) ->
-        # Show error view on the form
-        console.log(message)
-    )
+    model.save attributes, options
 
