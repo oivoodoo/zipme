@@ -19,3 +19,6 @@ class Shortlinks.Collections.LinksCollection extends Backbone.Collection
   model: Shortlinks.Models.Link
   url: '/links'
 
+  initialize: () ->
+    @storage = new Offline.Storage('links', @)
+
