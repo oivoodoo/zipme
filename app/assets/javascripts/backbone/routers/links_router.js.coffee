@@ -20,16 +20,13 @@ class Shortlinks.Routers.LinksRouter extends Backbone.Router
     @form.render()
 
   edit: (id) ->
-    model = new Shortlinks.Models.Link(id: id)
-    model.fetch
-      success: (model) =>
-        el = $("#link_#{model.id}")
+    model = Shortlinks.Tables.links.get(id: id)
 
-        @view = new Shortlinks.Views.Links.Edit(
-          model: model
-          el: el
-        )
-        @view.render()
-      error: (message) ->
-        console.log(message)
+    el = $("#link_#{model.id}")
+
+    @view = new Shortlinks.Views.Links.Edit(
+      model: model
+      el: el
+    )
+    @view.render()
 
