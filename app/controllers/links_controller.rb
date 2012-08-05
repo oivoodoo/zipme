@@ -13,6 +13,7 @@ class LinksController < ApplicationController
 
   def create
     @link = Link.new(params[:link])
+    @link.user = current_user if logged_in?
 
     head(400) and return if @link.invalid?
 

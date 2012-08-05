@@ -29,6 +29,7 @@ describe LinksController do
     before { xhr :post, :create, :link => attributes }
 
     it { should respond_with(:success) }
+    it { assigns(:link).user.should_not be }
     it { response.body.should == Link.last.to_json(:methods => :short) }
   end
 
@@ -65,6 +66,19 @@ describe LinksController do
 
   def attributes
     @attributes ||= attributes_for(:link)
+  end
+end
+
+describe LinksController do
+  context "when logged in" do
+    before { logged_in }
+
+    context "create a new link" do
+      before { post :create, :link => attributes_for(:link) }
+
+      it { should respond_with(:success) }
+      it { assigns(:link).user.should == current_user }
+    end
   end
 end
 
