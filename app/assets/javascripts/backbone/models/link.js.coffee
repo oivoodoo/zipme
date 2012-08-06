@@ -41,5 +41,9 @@ class Shortlinks.Collections.LinksCollection extends Backbone.Collection
 
   initialize: () ->
     @storage = new Offline.Storage('links', @, autoPush: true)
-    $(window).bind('online', () => @storage.sync.incremental())
+    $(window).bind('online', () =>
+      window.setTimeout(() =>
+        @storage.sync.incremental()
+      3000)
+    )
 
