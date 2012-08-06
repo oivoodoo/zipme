@@ -27,12 +27,6 @@ class Shortlinks.Models.Link extends Backbone.Model
     @set(sid: @id)
     @.on('change:dirty', (model, dirty) => @changeDirty(model, dirty))
 
-    unless Offline.onLine()
-      $(window).bind('online', () => @syncItem())
-
-  syncItem: () ->
-    @collection.storage.sync.pushItem(@) if @get('dirty')
-
   changeAccess: () ->
     access = @get('user_id') == config.user_id or not @get('user_id')?
     @set(access: access)
@@ -47,4 +41,5 @@ class Shortlinks.Collections.LinksCollection extends Backbone.Collection
 
   initialize: () ->
     @storage = new Offline.Storage('links', @, autoPush: true)
+    $(window).bind('online', () => @storage.sync.incremental())
 
