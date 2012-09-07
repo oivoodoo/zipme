@@ -20,6 +20,8 @@ Shortlinks::Application.routes.draw do
     files.each do |file|
       cache Pathname.new(file).relative_path_from(root)
     end
+
+    network '/'
   end
 
   match "/application.manifest" => offline
